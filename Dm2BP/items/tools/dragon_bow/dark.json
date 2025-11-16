@@ -49,7 +49,7 @@
       "minecraft:repairable": {
         "repair_items": [
           {
-            "items": ["bj:dark_scales"],
+            "items": ["dragonmountsplus:dark_dragonscales"],
             "repair_amount": 500
           }
         ]
@@ -57,3 +57,4 @@
     }
   }
 }
+

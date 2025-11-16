@@ -7,7 +7,6 @@ world.beforeEvents.itemUseOn.subscribe(event => {
 
   if (!player || !item || !block) return;
 
-  // Kiểm tra người chơi đang "ngồi" (sneaking)
   if (
     player.isSneaking &&
     item.typeId === "minecraft:flint_and_steel" &&
@@ -17,4 +16,15 @@ world.beforeEvents.itemUseOn.subscribe(event => {
     player.runCommandAsync(`setblock ${x} ${y} ${z} air`);
     player.runCommandAsync(`summon dragonmountsplus:ender_dragon_egg ${x} ${y + 1} ${z}`);
   }
+});
+
+world.beforeEvents.worldInitialize.subscribe(initEvent => {
+  initEvent.blockComponentRegistry.registerCustomComponent("dragonmountsplus_ender_egg_block:trigger", {
+    onPlayerInteract: e => {
+      if (!e.player) return;
+      const { x, y, z } = e.block.location;
+      e.player.runCommandAsync(`summon dragonmountsplus:ender_dragon_egg ${x} ${y + 1} ${z}`);
+      e.player.runCommandAsync(`setblock ${x} ${y} ${z} air`);
+    }
+  });
 });

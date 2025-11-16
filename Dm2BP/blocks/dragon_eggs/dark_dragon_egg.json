@@ -16,7 +16,7 @@
     },
     "components": {
       "minecraft:loot": "loot_tables/blocks/dark.json",
-      "minecraft:custom_components": ["falling_block:powder_placement"],
+            "minecraft:custom_components": ["falling_block:powder_placement", "dragonmountsplus_dark_egg_block:trigger"],
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 1.0
       },
@@ -58,10 +58,7 @@
         }
       },
       "minecraft:geometry": "geometry.dragon_egg",
-      "tag:stone": {},
-      "minecraft:custom_components": [
-        "dragonmountsplus_dark_egg_block:trigger"
-      ]
+      "tag:stone": {}
     },
     "permutations": [
       {
@@ -116,3 +113,5 @@
     "events": {}
   }
 }
+
+

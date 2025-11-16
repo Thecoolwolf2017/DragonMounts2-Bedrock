@@ -57,10 +57,7 @@
         }
       },
       "minecraft:geometry": "geometry.dragoncore",
-      "tag:stone": {},
-      "minecraft:custom_components": [
-        "block:trigger"
-      ]
+      "tag:stone": {}
     },
     "permutations": [
       {

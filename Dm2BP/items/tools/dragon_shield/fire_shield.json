@@ -28,13 +28,13 @@
         "repair_items": [
           {
             "items": [
-              "minecraft:fire_scales"
+              "dragonmountsplus:fire_dragonscales"
             ],
             "repair_amount": 250
           },
           {
             "items": [
-              "fire:shield"
+              "dragonmountsplus:fire_shield"
             ],
             "repair_amount": "context.other->query.remaining_durability + 0.5 * context.other->query.max_durability"
           }
@@ -43,12 +43,13 @@
       "minecraft:tags": {
         "tags": [
           "minecraft:is_shield",
-          "minecraft:transformable_items"
+          "minecraft:transformable_items",
+          "dragon_shield_fire"
         ]
       }
     },
     "description": {
-      "identifier": "fire:shield",
+      "identifier": "dragonmountsplus:fire_shield",
       "menu_category": {
         "category": "equipment",
         "group": "bj1:itemGroup.name.shield_items"
@@ -56,3 +57,4 @@
     }
   }
 }
+

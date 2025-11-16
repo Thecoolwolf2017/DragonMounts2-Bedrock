@@ -26,7 +26,7 @@
         "repair_items": [
           {
             "items": [
-              "bj:fire_scales"
+              "dragonmountsplus:fire_dragonscales"
             ],
             "repair_amount": 500
           }
@@ -59,3 +59,4 @@
     }
   }
 }
+

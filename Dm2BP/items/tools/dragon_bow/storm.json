@@ -26,7 +26,7 @@
         "repair_items": [
           {
             "items": [
-              "bj:storm_scales"
+              "dragonmountsplus:storm_dragonscales"
             ],
             "repair_amount": 500
           }
@@ -59,3 +59,4 @@
     }
   }
 }
+

@@ -16,7 +16,7 @@
 				"default": "animation.dragon_breath.default"
 			},
 	   "particle_effects": {
-				"default": "dragonmountsplus:breathnether1"
+				"default": "dragonmountsplus:breathnether"
 			},
 						"scripts": {
 				"animate": [
@@ -27,3 +27,4 @@
     }
   }
 }
+

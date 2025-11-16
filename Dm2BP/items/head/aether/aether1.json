@@ -15,8 +15,7 @@
         "protection": 0
       },
       "minecraft:block_placer": {
-        "block": "dragonmountsplus:aether1_head_block",
-        "replace_block_item": true
+        "block": "dragonmountsplus:aether1_head_block"
       }
     }
   }

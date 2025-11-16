@@ -27,41 +27,7 @@
       "minecraft:allow_off_hand": false,
       "tag:minecraft:is_food": {},
       "minecraft:use_animation": "eat",
-      "minecraft:icon": "raw_dragon_meat",
-      "minecraft:render_offsets": {
-        "main_hand": {
-          "third_person": {
-            "scale": [
-              0.1,
-              0.1,
-              0.1
-            ]
-          },
-          "first_person": {
-            "scale": [
-              0.037999999999977205,
-              0.037999999999977205,
-              0.037999999999977205
-            ]
-          }
-        },
-        "off_hand": {
-          "third_person": {
-            "scale": [
-              0.1,
-              0.1,
-              0.1
-            ]
-          },
-          "first_person": {
-            "scale": [
-              0.037999999999977205,
-              0.037999999999977205,
-              0.037999999999977205
-            ]
-          }
-        }
-      }
+      "minecraft:icon": "raw_dragon_meat"
     }
   }
 }

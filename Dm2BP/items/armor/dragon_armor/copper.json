@@ -23,10 +23,9 @@
         "tags": [
           "minecraft:transform_materials"
         ]
-      },
-      "minecraft:custom_components": [
-        "po_ljahjwke:trigger"
-      ]
+      }
     }
   }
 }   
+
+

@@ -1,7 +1,7 @@
 {
   "format_version": 2,
   "header": {
-    "description": "Dragon Mounts 2: Bedrock Edition-v2.0",
+    "description": "Dragon Mounts 2 is the official second add-on in the series that adds fire breathing dragons, nests structures, new tools and armor! It is a different add-on compared to it's prequel Dragon Mounts. The premise of this version is to expand the original Dragon Mounts by adding in an rpg adventure-styled experience.",
     "name": "Dragon Mounts 2 - Behavior Pack",
     "uuid": "24b454d6-d9bb-4327-968b-79000bbe8fc8",
     "version": [
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "Dragon Mounts 2: Bedrock Edition",
+      "description": "Dragon Mounts 2 is the official second add-on in the series that adds fire breathing dragons, nests structures, new tools and armor! It is a different add-on compared to it's prequel Dragon Mounts. The premise of this version is to expand the original Dragon Mounts by adding in an rpg adventure-styled experience.",
       "type": "data",
       "uuid": "7c169933-56ca-4e32-8cac-db9fda7b3567",
       "version": [

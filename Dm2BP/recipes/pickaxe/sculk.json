@@ -2,7 +2,7 @@
 	"format_version": "1.12",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "dragonmountsplus:storm_dragon_pickaxe"
+			"identifier": "dragonmountsplus:sculk_dragon_pickaxe"
 		},
 		"tags": [
 			"crafting_table"
@@ -14,14 +14,16 @@
 		],
 		"key": {
 			"X": {
-				"item": "dragonmountsplus:storm_dragonscales"
+				"item": "dragonmountsplus:sculk_dragonscales"
 			},
 			"#": {
 				"item": "minecraft:stick"
 			}
 		},
 		"result": {
-			"item": "dragonmountsplus:storm_dragon_pickaxe"
+			"item": "dragonmountsplus:sculk_dragon_pickaxe"
 		}
 	}
 }
+
+

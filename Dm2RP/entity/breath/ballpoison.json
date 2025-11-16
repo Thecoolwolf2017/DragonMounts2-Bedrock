@@ -16,7 +16,7 @@
 				"default": "animation.dragon_breath.default"
 			},
 	   "particle_effects": {
-				"default": "dragonmountsplus:breathpoison1"
+				"default": "dragonmountsplus:breathpoison"
 			},
 						"scripts": {
 				"animate": [
@@ -27,3 +27,4 @@
     }
   }
 }
+

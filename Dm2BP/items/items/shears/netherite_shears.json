@@ -34,7 +34,7 @@
 					},
 					{
 						"items": [
-							"dragonmounts:netherite_shears"
+							"dragonmountsplus:netherite_shears"
 						],
 						"repair_amount": "context.other->query.remaining_durability + context.other->query.max_durability * 0.05"
 					}
@@ -64,3 +64,4 @@
 		}
 	}
 }
+

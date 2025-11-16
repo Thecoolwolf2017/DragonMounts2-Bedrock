@@ -29,7 +29,7 @@ const AllowedMobs = [
     "dragonmountsplus:zombie_dragon"
 ];  
 
-// ánh xạ mob -> item amulet
+// Ã¡nh xáº¡ mob -> item amulet
 const MobToAmulet = {
     "dragonmountsplus:aether_dragon": "dragonmountsplus:aether_amulet",
     "dragonmountsplus:dark_dragon": "dragonmountsplus:dark_amulet",
@@ -50,7 +50,7 @@ const MobToAmulet = {
     "dragonmountsplus:zombie_dragon": "dragonmountsplus:zombie_amulet"
 };
 
-// danh sách các amulet đầy
+// danh sÃ¡ch cÃ¡c amulet Ä‘áº§y
 const FilledAmulets = Object.values(MobToAmulet);
 
 world.afterEvents.entityHitEntity.subscribe((data) => {
@@ -74,13 +74,13 @@ world.afterEvents.entityHitEntity.subscribe((data) => {
 
     const { x, y, z } = hitEntity.location;
 
-    // nếu mob nằm trong bảng map thì đổi item
+    // náº¿u mob náº±m trong báº£ng map thÃ¬ Ä‘á»•i item
     if (equipment.getLore().length == 0 && MobToAmulet[hitEntity.typeId]) {
         const newItem = new ItemStack(MobToAmulet[hitEntity.typeId], 1);
         newItem.setLore([`Name: ${hitEntity.typeId}`, `ID: ${hitEntity.id}`]);
         damagingEntity.getComponent("equippable").setEquipment("Mainhand", newItem);
 
-        // xử lý lưu mob
+        // xá»­ lÃ½ lÆ°u mob
         hitEntity.runCommand(`ride @a[r=3.1] stop_riding`);
         hitEntity.runCommand(`tp ${x} ${y + 320} ${z}`);
         hitEntity.runCommand(`structure save "${hitEntity.id}" ${x} ${y + 320} ${z} ${x} ${y + 320} ${z} true disk false`);
@@ -111,11 +111,11 @@ function registerAmulet(itemId, returnEmpty) {
                     source.runCommand(`playsound mob.endermen.portal @a ${x} ${y} ${z} 1 1 `);
 
                     if (returnEmpty) {
-                        // đổi lại thành amulet trống
+                        // Ä‘á»•i láº¡i thÃ nh amulet trá»‘ng
                         const emptyAmulet = new ItemStack("dragonmountsplus:amulet", 1);
                         source.getComponent("equippable").setEquipment("Mainhand", emptyAmulet);
                     } else {
-                        // nếu là amulet rỗng thì chỉ xóa lore
+                        // náº¿u lÃ  amulet rá»—ng thÃ¬ chá»‰ xÃ³a lore
                         itemStack.setLore([]);
                         source.getComponent("equippable").setEquipment("Mainhand", itemStack);
                     }
@@ -125,8 +125,8 @@ function registerAmulet(itemId, returnEmpty) {
     });
 }
 
-// đăng ký cho amulet rỗng
+// Ä‘Äƒng kÃ½ cho amulet rá»—ng
 registerAmulet("dragonmountsplus:amulet", false);
 
-// đăng ký cho tất cả amulet đầy (sau khi dùng thì trả về rỗng)
+// Ä‘Äƒng kÃ½ cho táº¥t cáº£ amulet Ä‘áº§y (sau khi dÃ¹ng thÃ¬ tráº£ vá» rá»—ng)
 FilledAmulets.forEach(id => registerAmulet(id, true));

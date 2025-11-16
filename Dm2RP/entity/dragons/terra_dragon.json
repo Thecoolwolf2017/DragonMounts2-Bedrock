@@ -73,7 +73,7 @@
 				"null": "mob.mountdragon.null"
 			},
 			"particle_effects": {
-				"default": "dragonmountsplus:endering_table_particle"
+				"default": "dragonmountsplus:enchanting_table_particle"
 			},
 			"render_controllers": [
 				"controller.render.dragons.is_saddled",
@@ -91,3 +91,4 @@
 		}
 	}
 }
+

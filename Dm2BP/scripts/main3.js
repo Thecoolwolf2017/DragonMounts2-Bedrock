@@ -43,13 +43,13 @@ world.afterEvents.entityHurt.subscribe((hurt) => {
   const health = player.getComponent("minecraft:health");
   const fromBehind = isBehind(player, damaging);
 
-  // Nếu bị đánh từ phía sau
+  // Náº¿u bá»‹ Ä‘Ã¡nh tá»« phÃ­a sau
   if (fromBehind) {
     player.addTag("beh");
     return;
   }
 
-  // Nếu không bị đánh từ sau và là các loại sát thương có thể đỡ
+  // Náº¿u khÃ´ng bá»‹ Ä‘Ã¡nh tá»« sau vÃ  lÃ  cÃ¡c loáº¡i sÃ¡t thÆ°Æ¡ng cÃ³ thá»ƒ Ä‘á»¡
   if (
     ["entityAttack", "projectile", "entityExplosion", "blockExplosion"].includes(hurt.damageSource.cause) &&
     player.hasTag("blocking")
@@ -60,7 +60,7 @@ world.afterEvents.entityHurt.subscribe((hurt) => {
       z: damaging.location.z - player.location.z
     };
 
-    // Kiểm tra khiên mainhand
+    // Kiá»ƒm tra khiÃªn mainhand
     try {
       const mainHandItem = equipment.getEquipment(EquipmentSlot.Mainhand);
       if (
@@ -88,7 +88,7 @@ world.afterEvents.entityHurt.subscribe((hurt) => {
       }
     } catch (e) {}
 
-    // Kiểm tra khiên offhand
+    // Kiá»ƒm tra khiÃªn offhand
     try {
       const offHandItem = equipment.getEquipment(EquipmentSlot.Offhand);
       if (
@@ -138,7 +138,7 @@ world.afterEvents.playerPlaceBlock.subscribe((blockPlace) => {
   }
 });
 
-// Hàm xác định bị đánh từ sau lưng
+// HÃ m xÃ¡c Ä‘á»‹nh bá»‹ Ä‘Ã¡nh tá»« sau lÆ°ng
 function isBehind(player, attacker) {
   const look = player.getViewDirection();
   const dx = attacker.location.x - player.location.x;

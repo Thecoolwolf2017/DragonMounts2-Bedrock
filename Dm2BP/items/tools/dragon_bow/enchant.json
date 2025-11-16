@@ -26,7 +26,7 @@
         "repair_items": [
           {
             "items": [
-              "bj:enchant_scales"
+              "dragonmountsplus:enchant_dragonscales"
             ],
             "repair_amount": 500
           }
@@ -59,3 +59,4 @@
     }
   }
 }
+

@@ -85,8 +85,7 @@ class FallingBlockUtils {
     }
     // Maps custom components with their respective identifiers
     static CustomComponents = { 
-        'falling_block:powder_placement': FallingBlockUtils.PowderPlacement,
-        'falling_block:layer_placement': FallingBlockUtils.LayerPlacement
+        'falling_block:powder_placement': FallingBlockUtils.PowderPlacement
     }
 }
 

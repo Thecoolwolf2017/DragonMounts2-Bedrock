@@ -1,6 +1,6 @@
 import { world } from "@minecraft/server";
 
-// Cấu hình: mỗi key ứng với một entity
+// Cáº¥u hÃ¬nh: má»—i key á»©ng vá»›i má»™t entity
 const summonMap = {
   "dragonmountsplus:essence_aether": "dragonmountsplus:aether_dragon",
   "dragonmountsplus:essence_nether": "dragonmountsplus:nether_dragon",
@@ -36,5 +36,5 @@ world.beforeEvents.itemUseOn.subscribe(event => {
   player.runCommandAsync(`clear @s ${item.typeId} 0 1`);
   player.runCommandAsync(`playsound mob.endermen.portal @a ${x} ${y} ${z} 1 1 `);
   player.runCommandAsync(`setblock ${x} ${y} ${z} air`);
-  player.runCommandAsync(`summon ${entityId} ${x} ${y} ${z} minecraft:entity_transformed`);
+  player.runCommandAsync(`summon ${entityId} minecraft:entity_transformed ${x} ${y} ${z}`);
 });

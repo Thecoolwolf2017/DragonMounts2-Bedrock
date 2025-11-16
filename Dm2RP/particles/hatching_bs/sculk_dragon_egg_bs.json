@@ -9,9 +9,6 @@
 			}
 		},
 		"components": {
-			"			}
-		},
-		"components": {
 			"minecraft:emitter_rate_steady": {
 				"spawn_rate": 64,
 				"max_particles": 64
@@ -74,13 +71,13 @@
 					]
 				}
 			},
-"minecraft:particle_appearance_tinting": {
-  "color": [
-		"variable.particle_random_1 * 0.01 + 0.05",
-		"variable.particle_random_1 * 0.09 + 0.07",
-		"variable.particle_random_1 * 0.10 + 0.09"
-  ]
-},
+			"minecraft:particle_appearance_tinting": {
+				"color": [
+					"variable.particle_random_1 * 0.01 + 0.05",
+					"variable.particle_random_1 * 0.09 + 0.07",
+					"variable.particle_random_1 * 0.10 + 0.09"
+				]
+			},
 			"minecraft:particle_appearance_lighting": {}
 		}
 	}

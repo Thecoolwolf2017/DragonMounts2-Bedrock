@@ -448,6 +448,22 @@ world.beforeEvents.worldInitialize.subscribe(initEvent => {
 });
 
 world.beforeEvents.worldInitialize.subscribe(initEvent => {
+    initEvent.itemComponentRegistry.registerCustomComponent('tool:act_as_sword', {
+        onHitEntity({ source }) {
+            if (!(source instanceof Player)) return;
+
+            const equippable = source.getComponent("minecraft:equippable");
+            if (!equippable) return;
+
+            const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+            if (!mainhand?.hasItem()) return;
+
+            applyDurabilityDamage(source, mainhand);
+        }
+    });
+});
+
+world.beforeEvents.worldInitialize.subscribe(initEvent => {
     initEvent.itemComponentRegistry.registerCustomComponent('tool:act_as_shovel', {
         onUseOn({ source, block }) {
             // Get main hand slot
@@ -518,4 +534,19 @@ world.beforeEvents.worldInitialize.subscribe(initEvent => {
             applyDurabilityDamage(source, mainhand); 
         }
       });
+});
+
+world.beforeEvents.worldInitialize.subscribe(initEvent => {
+    initEvent.itemComponentRegistry.registerCustomComponent('tool:act_as_pickaxe', {
+        onUseOn({ source }) {
+            if (!(source instanceof Player)) return;
+
+            const equippable = source.getComponent("minecraft:equippable");
+            if (!equippable) return;
+
+            const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+            if (!mainhand?.hasItem()) return;
+            // Placeholder for future pickaxe-specific interactions.
+        }
+    });
 });

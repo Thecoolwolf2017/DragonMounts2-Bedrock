@@ -12,7 +12,7 @@
         "bow_pulling_0": "textures/items/bow/ender_bow_pulling_0",
         "bow_pulling_1": "textures/items/bow/ender_bow_pulling_1",
         "bow_pulling_2": "textures/items/bow/ender_bow_pulling_2",
-        "endered": "textures/misc/enchanted_item_glint"
+        "enchanted": "textures/misc/enchanted_item_glint"
       },
       "geometry": {
         "default": "geometry.bow_standby",

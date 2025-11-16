@@ -442,8 +442,10 @@
         },
         "minecraft:leashable": {
           "soft_distance": 8.0,
-          "hard_distance": 24.0,
-          "max_distance": 12.0,
+
+          "hard_distance": 12.0,
+
+          "max_distance": 24.0,
           "on_leash": {
             "event": "dragonmountsplus:dragon_on_leash",
             "target": "self"
@@ -1009,10 +1011,6 @@
             "deals_damage": false
           },
           {
-            "cause": "suicide",
-            "deals_damage": false
-          },
-          {
             "cause": "temperature",
             "deals_damage": true
           },
@@ -1033,7 +1031,7 @@
 							"filters": {
 								"all_of": [
 									{
-										"test": "has_damage"
+										"test": "has_damage", "operator": ">", "value": 0
 									}
 								]
 							},
@@ -1212,14 +1210,11 @@
       }
     },
     "events": {
-      "dragonmountsplus:skeleton_dragon_egg_born":{
-        "spawn_entity": {
-          "entity": "dragonmountsplus:skeleton_dragon_egg",
-          "spawn_pos": {
-            "x": 0,
-            "y": 1,
-            "z": 0
-          }
+      "dragonmountsplus:skeleton_dragon_egg_born": {
+        "queue_command": {
+          "command": [
+            "summon dragonmountsplus:skeleton_dragon_egg ~ ~1 ~"
+          ]
         }
       },
       "minecraft:entity_spawned": {
@@ -1946,3 +1941,7 @@
     }
   }
 }
+
+
+
+

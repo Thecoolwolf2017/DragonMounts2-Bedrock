@@ -29,7 +29,7 @@
                     {
                        
                         "group_identifier": {
-                            "icon": "aether:shield",
+                            "icon": "dragonmountsplus:aether_shield",
                             "name": "bj1:itemGroup.name.shield_items"
                         },
                         "items": []
@@ -45,7 +45,7 @@
                     {
                        
                         "group_identifier": {
-                            "icon": "bj:eye_aether",
+                            "icon": "minecraft:ender_eye",
                             "name": "bj3:itemGroup.name.eye_items"
                         },
                         "items": []
@@ -117,3 +117,5 @@
     }
 }
 //notoooojajajkdkdkdkf
+
+

@@ -47,3 +47,4 @@ import './FallingBlock/manager.js';
 import "./main1";
 import "./main3";
 import "./main4";
+import "./food";

@@ -1,2 +1,2 @@
-execute @e[r=7] ~~~fill ~1 ~1 ~1 ~~~ fire replace air
+execute as @e[r=7] at @s run fill ~1 ~1 ~1 ~ ~ ~ fire replace air
 damage @e[r=6] 5 fire

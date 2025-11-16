@@ -1,7 +1,7 @@
 {
   "format_version": 2,
   "header": {
-    "description": "Dragon Mounts 2: Bedrock Edition-v2.0",
+    "description": "Dragon Mounts 2 is the official second add-on in the series that adds fire breathing dragons, nests structures, new tools and armor! It is a different add-on compared to it's prequel Dragon Mounts. The premise of this version is to expand the original Dragon Mounts by adding in an rpg adventure-styled experience.",
     "name": "Dragon Mounts 2 - Resource Pack",
     "uuid": "77968600-b721-4f95-ad8c-d4f936ace3ef",
     "version": [
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "Dragon Mounts 2: Bedrock Edition",
+      "description": "Dragon Mounts 2 is the official second add-on in the series that adds fire breathing dragons, nests structures, new tools and armor! It is a different add-on compared to it's prequel Dragon Mounts. The premise of this version is to expand the original Dragon Mounts by adding in an rpg adventure-styled experience.",
       "type": "resources",
       "uuid": "e7dcad0a-a877-4414-a16d-4ea644d70d3d",
       "version": [

@@ -18,11 +18,11 @@ world.afterEvents.itemUse.subscribe(e => {
   const d = p.getViewDirection();
   const l = { x: p.location.x + d.x, y: p.location.y + 1.5 + d.y, z: p.location.z + d.z };
 for (let i = 0; i < 1; i++) {
-  const angleOffset = (i - 0.3) * 0.0; // Góc lệch để giãn đạn
+  const angleOffset = (i - 0.3) * 0.0; // GÃ³c lá»‡ch Ä‘á»ƒ giÃ£n Ä‘áº¡n
   const dx = d.x * Math.cos(angleOffset) - d.z * Math.sin(angleOffset);
   const dz = d.x * Math.sin(angleOffset) + d.z * Math.cos(angleOffset);
 
-const distance = 3.1; // khoảng cách 3 block trước mặt
+const distance = 3.1; // khoáº£ng cÃ¡ch 3 block trÆ°á»›c máº·t
 const spawnPos = {
   x: p.location.x + d.x * distance,
   y: p.location.y + 0 + d.y * distance,

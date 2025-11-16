@@ -29,135 +29,77 @@
 						"block": {
 							"tags": "q.any_tag('dirt', 'sand', 'gravel', 'grass', 'snow')"
 						},
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:grass_path",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:soul_sand",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:soul_soil",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:mud",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:dirt_with_roots",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:muddy_mangrove_roots",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:farmland",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:snow",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:grass",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:gravel",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:sand",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:dirt",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
-						"block": "minecraft:concretePowder",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"block": "minecraft:concrete_powder",
+						"speed": 30
 					},
 					{
 						"block": "minecraft:mycelium",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:podzol",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:snow",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					},
 					{
 						"block": "minecraft:clay",
-						"speed": 30,
-						"on_dig": {
-							"event": "break_blocks"
-						}
+						"speed": 30
 					}
-				],
-				"on_dig": {
-					"event": "break_blocks",
-					"target": "self"
-				}
+				]
 			},
       "minecraft:display_name": {
         "value": "%item.dragonmounts.dragon_shovel\n%tooltip.dragonmounts.ice"

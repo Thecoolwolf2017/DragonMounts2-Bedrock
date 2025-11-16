@@ -6,6 +6,9 @@
 			"materials": {
 				"default": "dragon_breath"
 			},
+			"textures": {
+				"default": "textures/breath/breathair"
+			},
 			"geometry": {
 				"default": "geometry.dragon_breath"
 			},
