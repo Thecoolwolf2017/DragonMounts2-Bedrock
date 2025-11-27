@@ -41,6 +41,8 @@ world.afterEvents.entityHurt.subscribe((hurt) => {
 
   const equipment = player.getComponent(EntityEquippableComponent.componentId);
   const health = player.getComponent("minecraft:health");
+  if (!equipment || !health) return;
+
   const fromBehind = isBehind(player, damaging);
 
   // Náº¿u bá»‹ Ä‘Ã¡nh tá»« phÃ­a sau
@@ -54,11 +56,16 @@ world.afterEvents.entityHurt.subscribe((hurt) => {
     ["entityAttack", "projectile", "entityExplosion", "blockExplosion"].includes(hurt.damageSource.cause) &&
     player.hasTag("blocking")
   ) {
-    const direction = {
-      x: damaging.location.x - player.location.x,
-      y: damaging.location.y - player.location.y,
-      z: damaging.location.z - player.location.z
-    };
+    let direction;
+    try {
+      direction = {
+        x: damaging.location.x - player.location.x,
+        y: damaging.location.y - player.location.y,
+        z: damaging.location.z - player.location.z
+      };
+    } catch (err) {
+      return;
+    }
 
     // Kiá»ƒm tra khiÃªn mainhand
     try {
@@ -140,9 +147,13 @@ world.afterEvents.playerPlaceBlock.subscribe((blockPlace) => {
 
 // HÃ m xÃ¡c Ä‘á»‹nh bá»‹ Ä‘Ã¡nh tá»« sau lÆ°ng
 function isBehind(player, attacker) {
-  const look = player.getViewDirection();
-  const dx = attacker.location.x - player.location.x;
-  const dz = attacker.location.z - player.location.z;
-  const dot = look.x * dx + look.z * dz;
-  return dot < 0;
+  try {
+    const look = player.getViewDirection();
+    const dx = attacker.location.x - player.location.x;
+    const dz = attacker.location.z - player.location.z;
+    const dot = look.x * dx + look.z * dz;
+    return dot < 0;
+  } catch (err) {
+    return false;
+  }
 }

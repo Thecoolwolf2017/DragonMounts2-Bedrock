@@ -29,7 +29,7 @@ const AllowedMobs = [
     "dragonmountsplus:zombie_dragon"
 ];  
 
-// Ã¡nh xáº¡ mob -> item amulet
+// A���A���nh xA���A���A��� mob -> item amulet
 const MobToAmulet = {
     "dragonmountsplus:aether_dragon": "dragonmountsplus:aether_amulet",
     "dragonmountsplus:dark_dragon": "dragonmountsplus:dark_amulet",
@@ -50,43 +50,64 @@ const MobToAmulet = {
     "dragonmountsplus:zombie_dragon": "dragonmountsplus:zombie_amulet"
 };
 
-// danh sÃ¡ch cÃ¡c amulet Ä‘áº§y
+// danh sA���A���ch cA���A���c amulet A,���?~A���A���Ay
 const FilledAmulets = Object.values(MobToAmulet);
 
-world.afterEvents.entityHitEntity.subscribe((data) => {
-    const { damagingEntity, hitEntity } = data;
-    if (damagingEntity.typeId != "minecraft:player") return;
+function safeStructureName(entityId) {
+    const cleaned = entityId.replace(/[^A-Za-z0-9_-]/g, "");
+    return cleaned.length > 0 ? `dm2_${cleaned}` : `dm2_${Date.now()}`;
+}
 
-    const family = hitEntity.getComponent("type_family");
-    if (
-        !AllowedMobs.includes(hitEntity.typeId) ||
-        EntitiesDeny.includes(hitEntity.typeId) ||
-        hitEntity.typeId == "minecraft:painting" ||
-        family.hasTypeFamily("npc") ||
-        family.hasTypeFamily("inanimate")
-    ) return;
-    
-    const isTamed = hitEntity.getComponent("minecraft:is_tamed");
-    if (!isTamed || (typeof isTamed.value === "boolean" && !isTamed.value)) return;
+world.afterEvents.entityHitEntity.subscribe(async (data) => {
+    try {
+        const { damagingEntity, hitEntity } = data;
+        if (!damagingEntity || damagingEntity.typeId !== "minecraft:player" || !hitEntity) return;
 
-    const equipment = damagingEntity.getComponent("equippable").getEquipment("Mainhand");
-    if (!equipment || equipment.typeId != "dragonmountsplus:amulet") return;
+        const family = hitEntity.getComponent("type_family");
+        if (
+            !AllowedMobs.includes(hitEntity.typeId) ||
+            EntitiesDeny.includes(hitEntity.typeId) ||
+            hitEntity.typeId === "minecraft:painting" ||
+            family.hasTypeFamily("npc") ||
+            family.hasTypeFamily("inanimate")
+        ) return;
+        
+        const isTamed = hitEntity.getComponent("minecraft:is_tamed");
+        if (!isTamed || (typeof isTamed.value === "boolean" && !isTamed.value)) return;
 
-    const { x, y, z } = hitEntity.location;
+        let equipComp;
+        try {
+            equipComp = damagingEntity.getComponent("equippable");
+        } catch (err) {
+            return;
+        }
+        const equipment = equipComp?.getEquipment("Mainhand");
+        if (!equipment || equipment.typeId !== "dragonmountsplus:amulet") return;
 
-    // náº¿u mob náº±m trong báº£ng map thÃ¬ Ä‘á»•i item
-    if (equipment.getLore().length == 0 && MobToAmulet[hitEntity.typeId]) {
-        const newItem = new ItemStack(MobToAmulet[hitEntity.typeId], 1);
-        newItem.setLore([`Name: ${hitEntity.typeId}`, `ID: ${hitEntity.id}`]);
-        damagingEntity.getComponent("equippable").setEquipment("Mainhand", newItem);
+        const { x, y, z } = hitEntity.location;
+        const structureName = safeStructureName(hitEntity.id);
 
-        // xá»­ lÃ½ lÆ°u mob
-        hitEntity.runCommand(`ride @a[r=3.1] stop_riding`);
-        hitEntity.runCommand(`tp ${x} ${y + 320} ${z}`);
-        hitEntity.runCommand(`structure save "${hitEntity.id}" ${x} ${y + 320} ${z} ${x} ${y + 320} ${z} true disk false`);
-        hitEntity.runCommand(`playsound mob.endermen.portal @a ${x} ${y} ${z} 1 1 `);
-        hitEntity.remove();
-    };
+        // nA���A���A���u mob nA���A���A���m trong bA���A���A���ng map thA���A��� A,���?~A���A������?���i item
+        if (equipment.getLore().length === 0 && MobToAmulet[hitEntity.typeId]) {
+            const newItem = new ItemStack(MobToAmulet[hitEntity.typeId], 1);
+            newItem.setLore([`Name: ${hitEntity.typeId}`, `ID: ${structureName}`]);
+
+            // Chi loai bo dragon neu luu thanh cong de tranh mat du lieu
+            const sx = Math.floor(x);
+            const sy = Math.floor(y);
+            const sz = Math.floor(z);
+            const saveResult = await hitEntity.runCommandAsync(`structure save "${structureName}" ${sx} ${sy} ${sz} ${sx} ${sy} ${sz} true disk false`).catch(() => null);
+
+            if (saveResult?.successCount) {
+                hitEntity.runCommandAsync(`ride @a[r=3.1] stop_riding`);
+                hitEntity.runCommandAsync(`playsound mob.endermen.portal @a ${x} ${y} ${z} 1 1 `);
+                hitEntity.remove();
+                equipComp.setEquipment("Mainhand", newItem);
+            }
+        };
+    } catch (err) {
+        return;
+    }
 });
 
 function registerAmulet(itemId, returnEmpty) {
@@ -94,6 +115,7 @@ function registerAmulet(itemId, returnEmpty) {
         data.itemComponentRegistry.registerCustomComponent(itemId, {
             onUseOn: ((event) => {
                 const { block, blockFace, source, itemStack } = event;
+                if (!source || source.typeId !== "minecraft:player") return;
                 const pos = block.location;
                 const direction = {
                     "North": {x: pos.x +0.5, y: pos.y, z: pos.z -0.5},
@@ -106,18 +128,20 @@ function registerAmulet(itemId, returnEmpty) {
                 const { x, y, z } = direction[blockFace];
 
                 if (itemStack.getLore().length > 0) {
-                    source.runCommand(`structure load "${Number(itemStack.getLore()[1].replace("ID: ", ""))}" ${x} ${y} ${z}`);
-                    source.runCommand(`structure delete "${Number(itemStack.getLore()[1].replace("ID: ", ""))}"`);
+                    const structureName = itemStack.getLore()[1].replace("ID: ", "");
+                    source.runCommand(`structure load "${structureName}" ${x} ${y} ${z}`);
+                    source.runCommand(`structure delete "${structureName}"`);
                     source.runCommand(`playsound mob.endermen.portal @a ${x} ${y} ${z} 1 1 `);
 
+                    const playerEquip = source.getComponent("equippable");
                     if (returnEmpty) {
-                        // Ä‘á»•i láº¡i thÃ nh amulet trá»‘ng
+                        // A,���?~A���A������?���i lA���A���A���i thA���A���nh amulet trA���A������?~ng
                         const emptyAmulet = new ItemStack("dragonmountsplus:amulet", 1);
-                        source.getComponent("equippable").setEquipment("Mainhand", emptyAmulet);
+                        playerEquip?.setEquipment("Mainhand", emptyAmulet);
                     } else {
-                        // náº¿u lÃ  amulet rá»—ng thÃ¬ chá»‰ xÃ³a lore
+                        // nA���A���A���u lA���A��� amulet rA���A������?"ng thA���A��� chA���A������?��� xA���A3a lore
                         itemStack.setLore([]);
-                        source.getComponent("equippable").setEquipment("Mainhand", itemStack);
+                        playerEquip?.setEquipment("Mainhand", itemStack);
                     }
                 };
             })
@@ -125,8 +149,8 @@ function registerAmulet(itemId, returnEmpty) {
     });
 }
 
-// Ä‘Äƒng kÃ½ cho amulet rá»—ng
+// A,���?~A,���'ng kA���A��� cho amulet rA���A������?"ng
 registerAmulet("dragonmountsplus:amulet", false);
 
-// Ä‘Äƒng kÃ½ cho táº¥t cáº£ amulet Ä‘áº§y (sau khi dÃ¹ng thÃ¬ tráº£ vá» rá»—ng)
+// A,���?~A,���'ng kA���A��� cho tA���A���A���t cA���A���A��� amulet A,���?~A���A���Ay (sau khi dA���A1ng thA���A��� trA���A���A��� vA���A���A? rA���A������?"ng)
 FilledAmulets.forEach(id => registerAmulet(id, true));

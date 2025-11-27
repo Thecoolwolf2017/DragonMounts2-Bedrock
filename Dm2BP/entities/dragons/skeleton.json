@@ -332,18 +332,34 @@
         },
         "minecraft:ageable": {
           "duration": 14400,
-          "feed_items": [
+                    "feed_items": [
             {
-              "item": "fish",
+              "item": "beef",
+              "growth": 0.015625
+            },
+            {
+              "item": "porkchop",
+              "growth": 0.0125
+            },
+            {
+              "item": "mutton",
+              "growth": 0.0104166
+            },
+            {
+              "item": "chicken",
+              "growth": 0.0104166
+            },
+            {
+              "item": "rabbit",
+              "growth": 0.0104166
+            },
+            {
+              "item": "cod",
               "growth": 0.0078125
             },
             {
               "item": "salmon",
               "growth": 0.0104166
-            },
-            {
-              "item": "clownfish",
-              "growth": 0.015625
             }
           ],
           "grow_up": {
@@ -378,11 +394,7 @@
             }
           }
           ],
-          "breed_items": [
-            "fish",
-            "salmon",
-            "clownfish"
-          ]
+          "breed_items": [ "beef", "porkchop", "mutton", "chicken", "rabbit", "cod", "salmon" ]
         },
         "minecraft:behavior.hurt_by_target": {
           "priority": 1,
@@ -1453,11 +1465,6 @@
             }
           },
           {
-            "filters": {
-              "test": "has_component",
-              "operator": "!=",
-              "value": "minecraft:is_baby"
-            },
             "add": {
               "component_groups": [
                 "dragonmountsplus:dragon_rideable",
@@ -1550,10 +1557,19 @@
         "sequence": [
           {
             "filters": {
-              "test": "has_tag",
-              "subject": "self",
-              "operator": "==",
-              "value": "flying"
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "flying"
+                },
+                {
+                  "test": "has_component",
+                  "operator": "!=",
+                  "value": "minecraft:is_baby"
+                }
+              ]
             },            
         "add":{"component_groups":["flying"]},
         "remove":{"component_groups":["on_ground"]}
@@ -1941,6 +1957,8 @@
     }
   }
 }
+
+
 
 
 

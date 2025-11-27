@@ -31,6 +31,14 @@ world.beforeEvents.itemUseOn.subscribe(event => {
   const entityId = summonMap[item.typeId];
   if (!entityId || block.typeId !== "dragonmountsplus:dragon_core") return;
 
+  // Prevent duplicate spawns if a dragon is already at this core.
+  const nearby = block.dimension.getEntities({
+    location: block.location,
+    maxDistance: 2,
+    families: ["dragon"]
+  });
+  if (nearby.length > 0) return;
+
   const { x, y, z } = block.location;
 
   player.runCommandAsync(`clear @s ${item.typeId} 0 1`);

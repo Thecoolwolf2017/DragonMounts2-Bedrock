@@ -22,6 +22,7 @@ const breath = {
 
 world.afterEvents.itemUse.subscribe(e => {
   const p = e.source;
+  if (!p || p.typeId !== "minecraft:player") return;
   if (e.itemStack.typeId !== "dragonmountsplus:diamond_wand") return;
 
   const r = p.getComponent("minecraft:riding")?.entityRidingOn;
